@@ -1,456 +1,81 @@
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>iPlace – Assistência Técnica</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
 
-:root {
-  --black: #0a0a0a;
-  --white: #ffffff;
-  --lime: #b5d400;
-  --lime-dark: #9ab800;
-  --gray-100: #f5f5f5;
-  --gray-200: #e8e8e8;
-  --gray-400: #aaa;
-  --gray-600: #666;
-  --gray-800: #222;
-  --radius: 14px;
-}
+<nav>
+  <div class="nav-brand">
+    <div class="logo-ring">
+      <svg viewBox="0 0 24 24" fill="white"><text x="1" y="18" font-size="12" font-family="sans-serif" font-weight="700">iP</text></svg>
+    </div>
+    <div class="apple-badge">
+      <svg viewBox="0 0 814 1000" fill="white" width="16" height="16"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-57.8-155.5-127.4C46 790.7 0 663 0 541.8c0-207.5 135.4-317.3 269-317.3 70.1 0 128.4 46.4 172.5 46.4 43.2 0 110.6-49 191.4-49 30.8 0 133.6 2.8 200.6 106.3zm-37.8-235.5c24.4-29 41.5-69.6 41.5-110.1 0-5.6-.6-11.1-1.6-15.6-39.3 1.5-85.9 26.1-113.4 58.3-22.4 26.1-43.6 66.6-43.6 107.8 0 6.2 1 12.3 1.6 14.2 2.8.5 7.4 1 11.9 1 35.1 0 79.4-23.2 103.6-55.6z"/></svg>
+      <span>Premium Reseller</span>
+    </div>
+    <span class="brand-title">Assistência Técnica</span>
+  </div>
 
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--white);
-  color: var(--gray-800);
-  min-height: 100vh;
-}
+  <ul class="nav-links">
+    <li><a href="#">Agendamento</a></li>
+    <li><a href="#" class="active">Consulta</a></li>
+  </ul>
 
-/* ── NAV ── */
-nav {
-  background: var(--black);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 40px;
-  height: 68px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
+  <a href="https://wa.me/" class="nav-whatsapp" target="_blank">
+    <div class="wa-icon">
+      <svg viewBox="0 0 24 24" fill="white" width="13" height="13"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.555 4.122 1.524 5.858L.057 23.404a.75.75 0 0 0 .904.94l5.696-1.484A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.698 9.698 0 0 1-4.953-1.355l-.354-.212-3.583.934.955-3.486-.231-.369A9.698 9.698 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+    </div>
+    <span>Fale conosco pelo WhatsApp</span>
+  </a>
+</nav>
 
-.nav-brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
+<main class="hero">
+  <p class="hero-eyebrow">Portal de Atendimento</p>
+  <h1 class="hero-title">Consulte o status do seu <strong>dispositivo</strong></h1>
+  <p class="hero-sub">Informe seu número de ordem de serviço e documento para continuar.</p>
 
-.logo-ring {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 2px solid var(--lime);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
+  <div class="card">
+    <div class="field">
+      <label for="os">Número da Ordem de Serviço</label>
+      <input id="os" type="text" placeholder="Digite o número de OS. Ex: 789" autocomplete="off"/>
+    </div>
 
-.apple-badge {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-  padding: 5px 9px;
-  border: 1px solid #444;
-  border-radius: 8px;
-}
+    <div class="field">
+      <label for="telefone">Número do Documento</label>
+      <input id="telefone" type="text" placeholder="Digite o número do seu documento" autocomplete="off"/>
+    </div>
 
-.apple-badge span {
-  font-size: 8px;
-  color: var(--gray-400);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  line-height: 1.2;
-  text-align: center;
-}
+    <button class="btn-consultar" onclick="consultarOS()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      Consultar
+    </button>
+  </div>
 
-.brand-title {
-  font-size: 17px;
-  font-weight: 600;
-  color: var(--white);
-  letter-spacing: -0.02em;
-}
+  <!-- LOADING -->
+  <div id="loading" style="display:none;">
+    <div class="loading-card">
+      <div class="spinner">
+        <div class="spinner-ring"></div>
+        <div class="spinner-logo">
+          <svg viewBox="0 0 24 24" fill="#b5d400" width="18" height="18"><text x="1" y="18" font-size="12" font-family="sans-serif" font-weight="700">iP</text></svg>
+        </div>
+      </div>
+      <p class="loading-text">Consultando ordem de serviço<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>
+    </div>
+  </div>
 
-.nav-links {
-  display: flex;
-  gap: 32px;
-  list-style: none;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
+  <!-- RESULTADO -->
+  <div id="resultado"></div>
 
-.nav-links a {
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--gray-400);
-  padding-bottom: 4px;
-  transition: color .2s;
-}
+</main>
 
-.nav-links a.active {
-  color: var(--lime);
-  border-bottom: 2px solid var(--lime);
-}
-
-.nav-links a:hover { color: var(--white); }
-
-.nav-whatsapp {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid #333;
-  border-radius: 50px;
-  padding: 8px 16px;
-  text-decoration: none;
-  transition: background .2s, border-color .2s;
-}
-
-.nav-whatsapp:hover {
-  background: rgba(181,212,0,.12);
-  border-color: var(--lime);
-}
-
-.wa-icon {
-  width: 22px; height: 22px;
-  background: #25D366;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-}
-
-.nav-whatsapp span {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--white);
-}
-
-/* ── HERO ── */
-.hero {
-  padding: 80px 20px 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.hero-eyebrow {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--lime-dark);
-  margin-bottom: 14px;
-  opacity: 0;
-  animation: fadeUp .5s ease forwards;
-}
-
-.hero-title {
-  font-size: clamp(22px, 3vw, 30px);
-  font-weight: 300;
-  color: var(--gray-800);
-  text-align: center;
-  line-height: 1.5;
-  max-width: 440px;
-  margin-bottom: 8px;
-  letter-spacing: -0.02em;
-  opacity: 0;
-  animation: fadeUp .5s ease .1s forwards;
-}
-
-.hero-title strong { font-weight: 600; }
-
-.hero-sub {
-  font-size: 14px;
-  color: var(--gray-600);
-  text-align: center;
-  margin-bottom: 40px;
-  opacity: 0;
-  animation: fadeUp .5s ease .18s forwards;
-}
-
-/* ── CARD ── */
-.card {
-  background: var(--white);
-  border: 1px solid var(--gray-200);
-  border-radius: 24px;
-  padding: 40px 44px 44px;
-  width: 100%;
-  max-width: 480px;
-  box-shadow: 0 8px 40px rgba(0,0,0,.07), 0 2px 8px rgba(0,0,0,.04);
-  opacity: 0;
-  animation: fadeUp .5s ease .26s forwards;
-}
-
-.field { margin-bottom: 22px; }
-
-.field label {
-  display: block;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--gray-600);
-  margin-bottom: 8px;
-}
-
-.field input {
-  width: 100%;
-  padding: 14px 18px;
-  border: 1.5px solid var(--gray-200);
-  border-radius: var(--radius);
-  font-size: 15px;
-  font-family: 'DM Sans', sans-serif;
-  color: var(--gray-800);
-  background: var(--gray-100);
-  outline: none;
-  transition: border-color .2s, background .2s, box-shadow .2s;
-}
-
-.field input::placeholder { color: var(--gray-400); font-size: 14px; }
-
-.field input:focus {
-  border-color: var(--lime);
-  background: var(--white);
-  box-shadow: 0 0 0 4px rgba(181,212,0,.15);
-}
-
-.btn-consultar {
-  width: 100%;
-  padding: 16px;
-  background: var(--lime);
-  color: var(--black);
-  border: none;
-  border-radius: 50px;
-  font-size: 15px;
-  font-weight: 700;
-  font-family: 'DM Sans', sans-serif;
-  letter-spacing: 0.04em;
-  cursor: pointer;
-  margin-top: 8px;
-  transition: background .2s, transform .15s, box-shadow .2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-.btn-consultar:hover {
-  background: var(--lime-dark);
-  box-shadow: 0 6px 24px rgba(181,212,0,.4);
-  transform: translateY(-1px);
-}
-
-.btn-consultar:active { transform: translateY(0); }
-
-/* ── LOADING ── */
-.loading-card {
-  margin-top: 32px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  background: var(--white);
-  border: 1px solid var(--gray-200);
-  border-radius: 24px;
-  padding: 40px 44px;
-  width: 100%;
-  max-width: 480px;
-  box-shadow: 0 8px 40px rgba(0,0,0,.06);
-  animation: fadeUp .4s ease forwards;
-}
-
-.spinner {
-  position: relative;
-  width: 56px;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.spinner-ring {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 3px solid var(--gray-200);
-  border-top-color: var(--lime);
-  animation: spin 0.9s linear infinite;
-}
-
-.spinner-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.loading-text {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--gray-600);
-  letter-spacing: 0.01em;
-}
-
-.dots span {
-  display: inline-block;
-  opacity: 0;
-  animation: dotPulse 1.2s ease-in-out infinite;
-}
-.dots span:nth-child(1) { animation-delay: 0s; }
-.dots span:nth-child(2) { animation-delay: 0.2s; }
-.dots span:nth-child(3) { animation-delay: 0.4s; }
-
-/* ── RESULTADO ── */
-#resultado {
-  width: 100%;
-  max-width: 480px;
-  margin-top: 28px;
-}
-
-.os-card {
-  background: var(--white);
-  border: 1px solid var(--gray-200);
-  border-radius: 24px;
-  padding: 36px 40px;
-  box-shadow: 0 8px 40px rgba(0,0,0,.07);
-  animation: fadeUp .4s ease forwards;
-}
-
-.os-card .os-eyebrow {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gray-400);
-  margin-bottom: 6px;
-}
-
-.os-card .os-number {
-  font-size: 36px;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  color: var(--black);
-  margin-bottom: 24px;
-  line-height: 1;
-}
-
-.os-divider {
-  height: 1px;
-  background: var(--gray-200);
-  margin: 20px 0;
-}
-
-.os-row {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  margin-bottom: 16px;
-}
-
-.os-row:last-of-type { margin-bottom: 0; }
-
-.os-row .label {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gray-400);
-}
-
-.os-row .value {
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--gray-800);
-}
-
-.status-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  background: var(--gray-100);
-  border: 1px solid var(--gray-200);
-  border-radius: 50px;
-  padding: 6px 14px 6px 10px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--gray-800);
-  margin-top: 4px;
-}
-
-.status-dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--gray-400);
-  flex-shrink: 0;
-}
-
-.status-dot.em-execucao { background: #f59e0b; box-shadow: 0 0 0 3px rgba(245,158,11,.2); }
-.status-dot.entregue    { background: #22c55e; box-shadow: 0 0 0 3px rgba(34,197,94,.2); }
-.status-dot.aguardando  { background: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,.2); }
-
-/* barra de progresso */
-.barra {
-  display: flex;
-  gap: 6px;
-  margin-top: 16px;
-}
-
-.quad {
-  flex: 1;
-  height: 8px;
-  border-radius: 99px;
-  background: var(--gray-200);
-  transition: background .3s;
-}
-
-.quad.ativo { background: var(--lime); }
-
-/* erro */
-.erro-card {
-  background: #fff5f5;
-  border: 1px solid #fecaca;
-  border-radius: 24px;
-  padding: 32px 40px;
-  text-align: center;
-  animation: fadeUp .4s ease forwards;
-}
-
-.erro-card .erro-icon {
-  font-size: 32px;
-  margin-bottom: 12px;
-}
-
-.erro-card p {
-  font-size: 15px;
-  font-weight: 500;
-  color: #b91c1c;
-}
-
-/* ── ANIMATIONS ── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-@keyframes dotPulse {
-  0%, 60%, 100% { opacity: 0; }
-  30% { opacity: 1; }
-}
-
-/* ── RESPONSIVE ── */
-@media (max-width: 600px) {
-  nav { padding: 0 20px; }
-  .nav-links { display: none; }
-  .brand-title { font-size: 14px; }
-  .card, .os-card, .loading-card, .erro-card { padding: 28px 24px; }
-  .hero { padding: 50px 16px 70px; }
-}
+<script src="script.js"></script>
+</body>
+</html>
