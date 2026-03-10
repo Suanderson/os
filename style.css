@@ -454,3 +454,79 @@ nav {
   .card, .os-card, .loading-card, .erro-card { padding: 28px 24px; }
   .hero { padding: 50px 16px 70px; }
 }
+
+/* ── RESPONSIVE MOBILE ── */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+}
+
+@media (max-width: 600px) {
+
+  nav {
+    padding: 0 16px;
+    height: 58px;
+  }
+
+  .logo-ring {
+    width: 36px;
+    height: 36px;
+  }
+
+  .apple-badge { display: none; }
+
+  .brand-title { font-size: 14px; }
+
+  .nav-whatsapp span { display: none; }
+  .nav-whatsapp { padding: 8px 10px; }
+
+  .hero {
+    padding: 40px 16px 60px;
+  }
+
+  .hero-eyebrow { font-size: 10px; }
+
+  .hero-title { font-size: 20px; }
+
+  .hero-sub {
+    font-size: 13px;
+    max-width: 280px;
+  }
+
+  .card {
+    padding: 28px 20px 32px;
+    border-radius: 20px;
+  }
+
+  .field input {
+    font-size: 16px; /* evita zoom automático no iOS */
+    padding: 13px 16px;
+  }
+
+  .btn-consultar {
+    font-size: 14px;
+    padding: 15px;
+  }
+
+  .os-card,
+  .loading-card,
+  .erro-card {
+    padding: 28px 20px;
+    border-radius: 20px;
+  }
+
+  .os-number { font-size: 28px; }
+
+  .status-badge {
+    font-size: 12px;
+    padding: 5px 12px 5px 9px;
+  }
+
+  .os-row .value { font-size: 14px; }
+
+  .barra { gap: 4px; }
+  .quad  { height: 7px; }
+
+  .loading-text { font-size: 13px; }
+
+  .erro-card p { font-size: 14px; }
+}
