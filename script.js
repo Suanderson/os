@@ -22,29 +22,75 @@ document.getElementById("loading").style.display = "none"
 if(!dados.encontrado){
 
 document.getElementById("resultado").innerHTML =
-"<div class='erro'>Ordem de serviço não encontrada.</div>"
+"Ordem de serviço não encontrada"
 
 return
 }
 
-document.getElementById("resultado").innerHTML = `
-<div class="os-card">
+let html = ""
 
-<h2>Ordem de Serviço ${dados.os}</h2>
+html += "<h2>ORDEM DE SERVIÇO</h2>"
 
-<p><b>Cliente:</b> ${dados.cliente}</p>
+html += "<h1>"+dados.os+"</h1>"
 
-<p><b>Produto:</b> ${dados.produto}</p>
+html += "<p>Situação atual:<br>"+dados.situacao+"</p>"
 
-<p><b>Situação:</b> ${dados.situacao}</p>
+html += "<p>Serviço:<br>"+dados.produto+"</p>"
 
-<p><b>Entrada:</b> ${dados.entrada_data} - ${dados.entrada_hora}</p>
+html += "<p>Entrada:<br>"+dados.entrada_data+" - "+dados.entrada_hora+"</p>"
 
-<p><b>Valor:</b> R$ ${dados.valor_total}</p>
+html += "<p>Saída:<br>"+(dados.saida_data || "---")+"</p>"
 
-<p><b>Recebido por:</b> ${dados.recebido_por}</p>
 
-</div>
-`
+
+/* BARRA DE PROGRESSO */
+
+if(dados.situacao == "SERVIÇO EM EXECUÇÃO"){
+
+let progresso = Number(dados.progresso) || 0
+
+html += "<div class='barra'>"
+
+for(let i=1;i<=5;i++){
+
+if(i <= progresso){
+
+html += "<div class='quad ativo'></div>"
+
+}else{
+
+html += "<div class='quad'></div>"
+
+}
+
+}
+
+html += "</div>"
+
+}
+
+
+
+/* SERVIÇO CONCLUÍDO */
+
+if(dados.situacao == "SERVIÇO CONCLUÍDO"){
+
+html += "<p>Valor total: R$"+dados.valor_total+"</p>"
+
+html += "<img src='pix.png' width='200'>"
+
+}
+
+
+
+/* ENTREGUE */
+
+if(dados.situacao == "ENTREGUE"){
+
+html += "<p>Recebido por:<br>"+dados.recebido_por+"</p>"
+
+}
+
+document.getElementById("resultado").innerHTML = html
 
 }
