@@ -20,33 +20,55 @@ function sair() {
 /* ══════════════════════════════
    LISTA DE OS
 ══════════════════════════════ */
+let _listaCompleta = [];
+
 function carregarLista() {
   document.getElementById("lista-os").innerHTML =
     '<div class="lista-estado">Carregando ordens de serviço...</div>';
 
   jsonp(URL_API + "?acao=listarOS", "cbLista", function (dados) {
-    const lista = document.getElementById("lista-os");
-
     if (!dados.lista || dados.lista.length === 0) {
-      lista.innerHTML = '<div class="lista-estado">Nenhuma ordem de serviço cadastrada.</div>';
+      document.getElementById("lista-os").innerHTML =
+        '<div class="lista-estado">Nenhuma ordem de serviço cadastrada.</div>';
       return;
     }
-
-    lista.innerHTML = "";
-    dados.lista.forEach(function (os) {
-      const div = document.createElement("div");
-      div.className = "os-item";
-      div.onclick   = function () { abrirOS(os.os); };
-      div.innerHTML = `
-        <span class="os-num">#${os.os}</span>
-        <span class="os-cliente">${os.cliente || "—"}</span>
-        <span class="os-produto">${os.produto  || "—"}</span>
-        <span class="os-badge ${badgeClass(os.situacao)}">${os.situacao || "—"}</span>
-        <span class="os-data">${os.entrada_data || "—"}</span>
-      `;
-      lista.appendChild(div);
-    });
+    _listaCompleta = dados.lista;
+    renderLista(_listaCompleta);
   });
+}
+
+function renderLista(lista) {
+  const container = document.getElementById("lista-os");
+
+  if (!lista || lista.length === 0) {
+    container.innerHTML = '<div class="lista-estado">Nenhuma OS encontrada para este status.</div>';
+    return;
+  }
+
+  container.innerHTML = "";
+  lista.forEach(function (os) {
+    const div = document.createElement("div");
+    div.className = "os-item";
+    div.onclick   = function () { abrirOS(os.os); };
+    div.innerHTML = `
+      <span class="os-num">#${os.os}</span>
+      <span class="os-cliente">${os.cliente || "—"}</span>
+      <span class="os-produto">${os.produto  || "—"}</span>
+      <span class="os-badge ${badgeClass(os.situacao)}">${os.situacao || "—"}</span>
+      <span class="os-data">${os.entrada_data || "—"}</span>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function filtrarPorStatus() {
+  const sel = document.getElementById("filtro-status").value;
+  if (!sel) {
+    renderLista(_listaCompleta);
+    return;
+  }
+  const filtrado = _listaCompleta.filter(os => os.situacao === sel);
+  renderLista(filtrado);
 }
 
 function badgeClass(s) {
@@ -70,7 +92,7 @@ function novaOS() {
 
   document.getElementById("form-titulo").textContent    = "Nova Ordem de Serviço";
   document.getElementById("form-os-numero").style.display = "none";
-  document.getElementById("secao-historico").style.display = "none";
+  document.getElementById("secao-historico-os").style.display = "none";
 
   const agora = new Date();
   document.getElementById("f-entrada-data").value = agora.toISOString().slice(0, 10);
@@ -123,8 +145,8 @@ function abrirOS(numero) {
 
     // histórico
     if (dados.historico && dados.historico.length > 0) {
-      document.getElementById("secao-historico").style.display = "block";
-      const hl = document.getElementById("historico-lista");
+      document.getElementById("secao-historico-os").style.display = "block";
+      const hl = document.getElementById("historico-lista-os");
       hl.innerHTML = "";
       dados.historico.forEach(function (h) {
         hl.innerHTML += `
@@ -134,7 +156,7 @@ function abrirOS(numero) {
           </div>`;
       });
     } else {
-      document.getElementById("secao-historico").style.display = "none";
+      document.getElementById("secao-historico-os").style.display = "none";
     }
 
     mostrarSecaoOS();
@@ -271,6 +293,97 @@ function jsonp(url, cb, fn) {
   s.src    = url + (url.includes("?") ? "&" : "?") + "callback=" + cb;
   s.onerror = function () { mostrarToast("Erro de conexão.", "err"); };
   document.body.appendChild(s);
+}
+
+
+/* ══════════════════════════════
+   HISTÓRICO
+══════════════════════════════ */
+let _historicoCompleto = [];
+
+function carregarHistorico() {
+  const container = document.getElementById("hist-conteudo");
+  container.innerHTML = '<div class="hist-loading"><div class="spinner-hist"></div><p>Carregando histórico...</p></div>';
+
+  jsonp(URL_API + "?acao=listarHistorico", "cbHistorico", function (dados) {
+    _historicoCompleto = dados.historico || [];
+    renderHistorico(_historicoCompleto);
+  });
+}
+
+function filtrarHistorico() {
+  const busca = document.getElementById("busca-os").value.trim();
+  document.getElementById("btn-limpar").style.display = busca ? "flex" : "none";
+
+  if (!busca) {
+    renderHistorico(_historicoCompleto);
+    return;
+  }
+
+  const num = busca.replace(/^0+/, ""); // remove zeros à esquerda para comparação
+  const filtrado = _historicoCompleto.filter(function (grupo) {
+    const osNum = String(grupo.os).replace(/^0+/, "");
+    return osNum.includes(num);
+  });
+
+  renderHistorico(filtrado, busca);
+}
+
+function limparBusca() {
+  document.getElementById("busca-os").value = "";
+  document.getElementById("btn-limpar").style.display = "none";
+  renderHistorico(_historicoCompleto);
+}
+
+function renderHistorico(grupos, busca) {
+  const container = document.getElementById("hist-conteudo");
+
+  if (!grupos || grupos.length === 0) {
+    container.innerHTML = `
+      <div class="hist-vazio">
+        <div class="hist-vazio-icon">🔍</div>
+        <p>${busca ? "Nenhum resultado para OS #" + busca : "Nenhum histórico registrado."}</p>
+      </div>`;
+    return;
+  }
+
+  container.innerHTML = grupos.map(function (grupo, gi) {
+    const eventos = grupo.eventos || [];
+    const total   = eventos.length;
+
+    const linhasTempo = eventos.map(function (ev, i) {
+      const isPrimeiro = i === 0;
+      const isUltimo   = i === total - 1;
+      const classe = isPrimeiro ? "primeiro" : isUltimo ? "ultimo" : "";
+      return `
+        <div class="hist-evento ${classe}">
+          <div class="hist-evento-card">
+            <div class="hist-evento-top">
+              <span class="hist-evento-status">${ev.evento || "—"}</span>
+              <span class="hist-evento-tempo">${ev.data || ""} ${ev.hora ? "às " + ev.hora : ""}</span>
+            </div>
+          </div>
+        </div>`;
+    }).join("");
+
+    return `
+      <div class="hist-grupo" id="grupo-${gi}">
+        <div class="hist-grupo-header" onclick="toggleGrupo(${gi})">
+          <span class="hist-os-num">OS #${grupo.os}</span>
+          <span class="hist-os-cliente">${grupo.cliente || ""}</span>
+          <span class="hist-os-badge">${total} evento${total !== 1 ? "s" : ""}</span>
+          <svg class="hist-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="hist-timeline">${linhasTempo}</div>
+      </div>`;
+  }).join("");
+}
+
+function toggleGrupo(index) {
+  const grupo = document.getElementById("grupo-" + index);
+  if (grupo) grupo.classList.toggle("collapsed");
 }
 
 /* ══════════════════════════════

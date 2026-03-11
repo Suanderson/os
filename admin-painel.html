@@ -71,12 +71,26 @@
     <section id="secao-lista">
       <div class="topbar">
         <h1>Ordens de Serviço</h1>
-        <button class="btn-nova-os" onclick="novaOS()">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
-          </svg>
-          Nova OS
-        </button>
+        <div class="topbar-actions">
+          <select class="filtro-status-sel" id="filtro-status" onchange="filtrarPorStatus()">
+            <option value="">Todos os status</option>
+            <option value="RECEBIDO">Recebido</option>
+            <option value="AGUARDANDO PEÇA">Aguardando Peça</option>
+            <option value="AGUARDANDO PEÇAS">Aguardando Peças</option>
+            <option value="AGUARDANDO PEÇA DE SUBSTITUIÇÃO">Aguardando Peça de Substituição</option>
+            <option value="AGUARDANDO PEÇAS DE SUBSTITUIÇÃO">Aguardando Peças de Substituição</option>
+            <option value="SERVIÇO EM EXECUÇÃO">Serviço em Execução</option>
+            <option value="SERVIÇO CONCLUÍDO">Serviço Concluído</option>
+            <option value="SAIU PARA ENTREGA">Saiu para Entrega</option>
+            <option value="ENTREGUE">Entregue</option>
+          </select>
+          <button class="btn-nova-os" onclick="novaOS()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+            Nova OS
+          </button>
+        </div>
       </div>
       <div class="os-lista-header">
         <span>OS</span>
@@ -181,7 +195,7 @@
         <!-- HISTÓRICO DA OS (mini linha do tempo dentro do formulário) -->
         <div class="form-section full" id="secao-historico-os" style="display:none">
           <p class="section-title">📜 Histórico Interno</p>
-          <div class="historico-lista" id="historico-lista"></div>
+          <div class="historico-lista" id="historico-lista-os"></div>
         </div>
 
       </div>
