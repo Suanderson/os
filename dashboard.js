@@ -46,9 +46,9 @@ function carregarDashboard() {
       // em execução
       if (sit === "SERVIÇO EM EXECUÇÃO") emExecucao++;
 
-      // concluídos no mês
+      // concluídos no mês — usa saida_data
       if (sit === "SERVIÇO CONCLUÍDO" || sit === "ENTREGUE") {
-        if (dentroDoMes(os.entrada_data, mesAtual, anoAtual)) concluidoMes++;
+        if (dentroDoMes(os.saida_data, mesAtual, anoAtual)) concluidoMes++;
       }
 
       // recebidos hoje
