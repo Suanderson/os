@@ -4,6 +4,7 @@ function consultarOS() {
 
   document.getElementById("resultado").innerHTML = "";
   document.getElementById("loading").style.display = "block";
+  salvarTelefoneCache(telefone);
 
   let url =
     "https://script.google.com/macros/s/AKfycbyGIGOxXHGtxXj5b4WHxbIU7IluC-Y7JWuZR_o1Dz0/exec?acao=consultarOS&os=" +
@@ -110,3 +111,27 @@ document.getElementById("os").addEventListener("keydown", function(e) {
 document.getElementById("telefone").addEventListener("keydown", function(e) {
   if (e.key === "Enter") consultarOS();
 });
+
+/* ── Cache de telefone (30 dias) ── */
+const CACHE_KEY = "iplace_telefone";
+const CACHE_DIAS = 30;
+
+function salvarTelefoneCache(telefone) {
+  if (!telefone) return;
+  const expira = Date.now() + CACHE_DIAS * 24 * 60 * 60 * 1000;
+  localStorage.setItem(CACHE_KEY, JSON.stringify({ telefone, expira }));
+}
+
+function carregarTelefoneCache() {
+  try {
+    const raw = localStorage.getItem(CACHE_KEY);
+    if (!raw) return;
+    const { telefone, expira } = JSON.parse(raw);
+    if (Date.now() > expira) { localStorage.removeItem(CACHE_KEY); return; }
+    const campo = document.getElementById("telefone");
+    if (campo && !campo.value) campo.value = telefone;
+  } catch (e) {}
+}
+
+// carrega ao abrir a página
+document.addEventListener("DOMContentLoaded", carregarTelefoneCache);
