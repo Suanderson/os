@@ -530,3 +530,35 @@ nav {
 
   .erro-card p { font-size: 14px; }
 }
+
+/* ── RODAPÉ ── */
+.site-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px;
+  margin-top: auto;
+}
+
+.footer-copy {
+  font-size: 11px;
+  color: var(--gray-200);
+  user-select: none;
+}
+
+/* link admin — invisível, só vira clicável ao passar o mouse */
+.footer-admin-link {
+  font-size: 11px;
+  color: transparent;
+  text-decoration: none;
+  padding: 4px 6px;
+  border-radius: 4px;
+  transition: color .2s;
+  cursor: default;
+}
+
+.footer-admin-link:hover {
+  color: var(--gray-200);
+  cursor: pointer;
+}
