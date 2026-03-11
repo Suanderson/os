@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>iPlace – Acesso ao Painel</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="admin-login.css"/>
+</head>
+<body>
+
+  <div class="login-bg">
+    <div class="login-box">
+
+      <div class="login-logo">
+        <div class="ring">
+          <svg viewBox="0 0 24 24" fill="white">
+            <text x="1" y="18" font-size="12" font-family="sans-serif" font-weight="700">iP</text>
+          </svg>
+        </div>
+        <div class="login-logo-text">
+          <span>iPlace</span>
+          <small>Assistência Técnica — Painel</small>
+        </div>
+      </div>
+
+      <h1 class="login-title">Entrar no painel</h1>
+      <p class="login-sub">Acesso restrito à equipe iPlace.</p>
+
+      <div class="login-field">
+        <label for="login-email">E-mail</label>
+        <input id="login-email" type="email" placeholder="seu@email.com" autocomplete="off"/>
+      </div>
+
+      <div class="login-field">
+        <label for="login-senha">Senha</label>
+        <input id="login-senha" type="password" placeholder="••••••••"/>
+      </div>
+
+      <button class="btn-login" id="btn-login" onclick="fazerLogin()">Entrar</button>
+
+      <div class="login-erro" id="login-erro"></div>
+
+    </div>
+  </div>
+
+  <script src="admin-login.js"></script>
+</body>
+</html>

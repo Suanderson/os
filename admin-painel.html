@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>iPlace – Painel</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="admin-painel.css"/>
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="ring">
+        <svg viewBox="0 0 24 24" fill="white">
+          <text x="1" y="18" font-size="12" font-family="sans-serif" font-weight="700">iP</text>
+        </svg>
+      </div>
+      <div>
+        <span class="sidebar-brand">iPlace</span>
+        <small>Assistência Técnica</small>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="nav-item active" id="nav-os" onclick="mostrarLista()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+          <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+        </svg>
+        Ordens de Serviço
+      </a>
+      <a class="nav-item" href="dashboard.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+        </svg>
+        Dashboard
+      </a>
+      <a class="nav-item" href="index.html" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+        Ver site cliente
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button class="btn-sair" onclick="sair()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+          <polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
+        Sair
+      </button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="painel-main">
+
+    <!-- ══ LISTA DE OS ══ -->
+    <section id="secao-lista">
+      <div class="topbar">
+        <h1>Ordens de Serviço</h1>
+        <button class="btn-nova-os" onclick="novaOS()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+          Nova OS
+        </button>
+      </div>
+
+      <div class="os-lista-header">
+        <span>OS</span>
+        <span>Cliente</span>
+        <span>Produto</span>
+        <span>Status</span>
+        <span>Entrada</span>
+      </div>
+
+      <div id="lista-os">
+        <div class="lista-estado">Carregando ordens de serviço...</div>
+      </div>
+    </section>
+
+    <!-- ══ FORMULÁRIO OS ══ -->
+    <section id="secao-os" style="display:none">
+
+      <div class="os-form-header">
+        <button class="btn-voltar" onclick="mostrarLista()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+          Voltar
+        </button>
+        <h2 class="form-titulo" id="form-titulo">Nova Ordem de Serviço</h2>
+        <span class="os-numero-badge" id="form-os-numero" style="display:none"></span>
+      </div>
+
+      <div class="form-grid">
+
+        <!-- CLIENTE -->
+        <div class="form-section">
+          <p class="section-title">👤 Informações do Cliente</p>
+          <div class="pfield">
+            <label>Nome</label>
+            <input id="f-cliente" type="text" placeholder="Nome completo"/>
+          </div>
+          <div class="pfield">
+            <label>Telefone</label>
+            <input id="f-telefone" type="text" placeholder="84999990000"/>
+          </div>
+          <div class="pfield">
+            <label>E-mail</label>
+            <input id="f-email" type="email" placeholder="cliente@email.com"/>
+          </div>
+          <div class="pfield">
+            <label>Documento (CPF/CNPJ)</label>
+            <input id="f-documento" type="text" placeholder="000.000.000-00"/>
+          </div>
+        </div>
+
+        <!-- PRODUTO -->
+        <div class="form-section">
+          <p class="section-title">📦 Produto</p>
+          <div class="pfield">
+            <label>Produto</label>
+            <input id="f-produto" type="text" placeholder="Ex: iPhone 14 Pro"/>
+          </div>
+          <div class="pfield">
+            <label>Descrição do Produto</label>
+            <input id="f-descricao-produto" type="text" placeholder="Cor, capacidade, modelo..."/>
+          </div>
+          <div class="pfield">
+            <label>Descrição do Problema</label>
+            <textarea id="f-descricao-problema" placeholder="Problema relatado pelo cliente..."></textarea>
+          </div>
+          <div class="pfield">
+            <label>Parecer Técnico</label>
+            <textarea id="f-parecer" placeholder="Diagnóstico técnico..."></textarea>
+          </div>
+        </div>
+
+        <!-- SERVIÇOS E PEÇAS -->
+        <div class="form-section">
+          <p class="section-title">🔧 Serviços e Peças</p>
+          <div class="pfield">
+            <label>Descrição do Serviço</label>
+            <input id="f-descricao-servico" type="text" placeholder="Ex: Troca de tela"/>
+          </div>
+          <div class="pfield">
+            <label>Peças Utilizadas</label>
+            <input id="f-pecas" type="text" placeholder="Ex: Tela original Apple"/>
+          </div>
+          <div class="pfield-row">
+            <div class="pfield">
+              <label>Valor do Serviço (R$)</label>
+              <input id="f-valor-servico" type="number" placeholder="0,00" oninput="calcularTotal()"/>
+            </div>
+            <div class="pfield">
+              <label>Valor das Peças (R$)</label>
+              <input id="f-valor-peca" type="number" placeholder="0,00" oninput="calcularTotal()"/>
+            </div>
+          </div>
+          <div class="valor-total-box">
+            <span>Valor Total</span>
+            <strong id="valor-total-display">R$ 0,00</strong>
+          </div>
+        </div>
+
+        <!-- STATUS E DATAS -->
+        <div class="form-section">
+          <p class="section-title">📊 Status e Datas</p>
+
+          <div class="pfield">
+            <label>Situação Atual</label>
+            <select id="f-situacao" onchange="onStatusChange()">
+              <option value="RECEBIDO">RECEBIDO</option>
+              <option value="AGUARDANDO PEÇA">AGUARDANDO PEÇA</option>
+              <option value="AGUARDANDO PEÇAS">AGUARDANDO PEÇAS</option>
+              <option value="AGUARDANDO PEÇA DE SUBSTITUIÇÃO">AGUARDANDO PEÇA DE SUBSTITUIÇÃO</option>
+              <option value="AGUARDANDO PEÇAS DE SUBSTITUIÇÃO">AGUARDANDO PEÇAS DE SUBSTITUIÇÃO</option>
+              <option value="SERVIÇO EM EXECUÇÃO">SERVIÇO EM EXECUÇÃO</option>
+              <option value="SERVIÇO CONCLUÍDO">SERVIÇO CONCLUÍDO</option>
+              <option value="SAIU PARA ENTREGA">SAIU PARA ENTREGA</option>
+              <option value="ENTREGUE">ENTREGUE</option>
+            </select>
+          </div>
+
+          <div class="pfield" id="campo-progresso" style="display:none">
+            <label>Progresso (1 a 5)</label>
+            <select id="f-progresso">
+              <option value="1">1 — Iniciando</option>
+              <option value="2">2 — Em andamento</option>
+              <option value="3">3 — Meio do processo</option>
+              <option value="4">4 — Quase pronto</option>
+              <option value="5">5 — Finalizando</option>
+            </select>
+          </div>
+
+          <div class="pfield" id="campo-recebido-por" style="display:none">
+            <label>Recebido por</label>
+            <input id="f-recebido-por" type="text" placeholder="Nome de quem retirou"/>
+          </div>
+
+          <div class="pfield-row">
+            <div class="pfield">
+              <label>Data de Entrada</label>
+              <input id="f-entrada-data" type="date"/>
+            </div>
+            <div class="pfield">
+              <label>Hora de Entrada</label>
+              <input id="f-entrada-hora" type="time"/>
+            </div>
+          </div>
+
+          <div class="pfield-row">
+            <div class="pfield">
+              <label>Data de Saída</label>
+              <input id="f-saida-data" type="date"/>
+            </div>
+            <div class="pfield">
+              <label>Hora de Saída</label>
+              <input id="f-saida-hora" type="time"/>
+            </div>
+          </div>
+        </div>
+
+        <!-- HISTÓRICO -->
+        <div class="form-section full" id="secao-historico" style="display:none">
+          <p class="section-title">📜 Histórico Interno</p>
+          <div class="historico-lista" id="historico-lista"></div>
+        </div>
+
+      </div>
+
+      <div class="form-actions">
+        <button class="btn-cancelar" onclick="mostrarLista()">Cancelar</button>
+        <button class="btn-salvar" onclick="salvarOS()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          Salvar OS
+        </button>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <script src="admin-painel.js"></script>
+</body>
+</html>
