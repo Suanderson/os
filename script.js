@@ -57,7 +57,7 @@ function mostrarResultado(dados) {
   html += `
     <div class="os-row">
       <span class="label">Serviço</span>
-      <span class="value">${dados.desc_servico}</span>
+      <span class="value">${dados.descricao_servico}</span>
     </div>
     <div class="os-row">
       <span class="label">Entrada</span>
