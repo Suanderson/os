@@ -12,8 +12,7 @@
 <nav>
   <div class="nav-brand">
     <div class="logo-ring">
-      <img class="logo-ring" src="Logo.png"/>
-      
+      <img src="Logo.png" alt="iPlace"/>
     </div>
     <span class="brand-title">Assistência Técnica</span>
   </div>
@@ -34,7 +33,7 @@
 <main class="hero">
   <p class="hero-eyebrow">Portal de Atendimento</p>
   <h1 class="hero-title">Consulte o status do seu <strong>dispositivo</strong></h1>
-  <p class="hero-sub">Informe seu número de ordem de serviço e número de telefone para continuar.</p>
+  <p class="hero-sub">Informe seu número de ordem de serviço e documento para continuar.</p>
 
   <div class="card">
     <div class="field">
@@ -43,8 +42,8 @@
     </div>
 
     <div class="field">
-      <label for="telefone">Número do telefone</label>
-      <input id="telefone" type="text" placeholder="Digite o número do seu telefone" autocomplete="off"/>
+      <label for="telefone">Número do Documento</label>
+      <input id="telefone" type="text" placeholder="Digite o número do seu documento" autocomplete="off"/>
     </div>
 
     <button class="btn-consultar" onclick="consultarOS()">
@@ -61,6 +60,7 @@
       <div class="spinner">
         <div class="spinner-ring"></div>
         <div class="spinner-logo">
+          <svg viewBox="0 0 24 24" fill="#b5d400" width="18" height="18"><text x="1" y="18" font-size="12" font-family="sans-serif" font-weight="700">iP</text></svg>
         </div>
       </div>
       <p class="loading-text">Consultando ordem de serviço<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>
