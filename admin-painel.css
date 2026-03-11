@@ -799,3 +799,72 @@ body {
   .topbar-actions { flex-direction: column; align-items: flex-end; gap: 8px; }
   .filtro-status-sel { width: 100%; }
 }
+
+/* ── BOTÃO APAGAR ── */
+.btn-apagar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 20px;
+  border-radius: 50px;
+  border: 1.5px solid #ff4444;
+  background: transparent;
+  color: #ff4444;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.btn-apagar:hover { background: #ff4444; color: #fff; }
+
+/* ── MODAL CONFIRMAÇÃO ── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn .2s ease;
+}
+
+.modal-box {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 36px 32px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,.2);
+  animation: slideUp .25s ease;
+}
+
+.modal-icon { font-size: 36px; margin-bottom: 12px; }
+.modal-box h3 { font-size: 20px; font-weight: 700; margin: 0 0 10px; color: var(--black); }
+.modal-box p  { font-size: 14px; color: var(--gray-400); line-height: 1.6; margin: 0 0 24px; }
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.btn-apagar-confirm {
+  padding: 12px 24px;
+  border-radius: 50px;
+  border: none;
+  background: #ff4444;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: background .2s;
+}
+.btn-apagar-confirm:hover { background: #cc0000; }
+.btn-apagar-confirm:disabled { opacity: .6; cursor: not-allowed; }
+
+@keyframes fadeIn  { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }

@@ -93,6 +93,7 @@ function novaOS() {
   document.getElementById("form-titulo").textContent    = "Nova Ordem de Serviço";
   document.getElementById("form-os-numero").style.display = "none";
   document.getElementById("secao-historico-os").style.display = "none";
+  document.getElementById("btn-apagar").style.display   = "none";
 
   const agora = new Date();
   document.getElementById("f-entrada-data").value = agora.toISOString().slice(0, 10);
@@ -119,6 +120,7 @@ function abrirOS(numero) {
     const badge = document.getElementById("form-os-numero");
     badge.textContent    = "#" + dados.os;
     badge.style.display  = "inline-block";
+    document.getElementById("btn-apagar").style.display = "flex";
 
     setValue("f-cliente",           dados.cliente);
     setValue("f-telefone",          dados.telefone);
@@ -282,6 +284,35 @@ function mostrarToast(msg, tipo) {
   t.className   = "toast show " + tipo;
   clearTimeout(t._timer);
   t._timer = setTimeout(() => { t.className = "toast"; }, 3000);
+}
+
+/* ══════════════════════════════
+   APAGAR OS
+══════════════════════════════ */
+function confirmarApagar() {
+  document.getElementById("modal-apagar").style.display = "flex";
+}
+
+function fecharModal() {
+  document.getElementById("modal-apagar").style.display = "none";
+}
+
+function apagarOS() {
+  const btn = document.getElementById("btn-apagar-confirm");
+  btn.disabled    = true;
+  btn.textContent = "Apagando...";
+
+  jsonp(URL_API + "?acao=apagarOS&os=" + osAtual, "cbApagar", function (dados) {
+    fecharModal();
+    if (dados.ok) {
+      mostrarToast("OS apagada com sucesso.", "ok");
+      setTimeout(mostrarLista, 1200);
+    } else {
+      btn.disabled    = false;
+      btn.textContent = "Sim, apagar";
+      mostrarToast("Erro ao apagar. Tente novamente.", "err");
+    }
+  });
 }
 
 /* ══════════════════════════════
