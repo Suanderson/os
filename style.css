@@ -40,24 +40,17 @@ nav {
 }
 
 .logo-ring {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 2px solid var(--lime);
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-shrink: 0;
-  overflow: hidden;
-  background: var(--black);
 }
 
 .logo-ring img {
-  width: 100%;
-  height: 100%;
+  height: 60px;
+  width: auto;
   object-fit: contain;
-  border-radius: 50%;
-  padding: 5px;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 
 .apple-badge {
@@ -477,9 +470,8 @@ nav {
     height: 58px;
   }
 
-  .logo-ring {
-    width: 36px;
-    height: 36px;
+  .logo-ring img {
+    height: 32px;
   }
 
   .apple-badge { display: none; }
