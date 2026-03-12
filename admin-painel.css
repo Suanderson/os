@@ -3,8 +3,8 @@
 :root {
   --black:     #0a0a0a;
   --white:     #ffffff;
-  --lime:      #b5d400;
-  --lime-dark: #9ab800;
+  --azure-pastel: #7cc9eb;
+  --azure: #5ea7c5; 
   --gray-100:  #f5f5f5;
   --gray-200:  #e8e8e8;
   --gray-400:  #aaa;
@@ -44,15 +44,13 @@ body {
   border-bottom: 1px solid #1a1a1a;
 }
 
-.sidebar-logo .ring {
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  border: 2px solid var(--lime);
+
+
+.logo-ring img {
+  height: 32px;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
 }
-
-.sidebar-logo .ring svg { width: 16px; height: 16px; }
 
 .sidebar-brand {
   display: block;
@@ -97,7 +95,7 @@ body {
 
 .nav-item svg { width: 17px; height: 17px; flex-shrink: 0; }
 .nav-item:hover  { background: #1a1a1a; color: var(--white); }
-.nav-item.active { background: #1a1a1a; color: var(--lime); }
+.nav-item.active { background: #1a1a1a; color: var(--azure-pastel); }
 
 .sidebar-footer {
   padding: 14px 10px;
@@ -152,7 +150,7 @@ body {
   align-items: center;
   gap: 8px;
   padding: 11px 20px;
-  background: var(--lime);
+  background: var(--azure-pastel);
   color: var(--black);
   border: none;
   border-radius: 50px;
@@ -166,7 +164,7 @@ body {
 .btn-nova-os svg { width: 16px; height: 16px; }
 
 .btn-nova-os:hover {
-  background: var(--lime-dark);
+  background: var(--azure);
   box-shadow: 0 4px 16px rgba(181,212,0,.3);
   transform: translateY(-1px);
 }
@@ -203,7 +201,7 @@ body {
 }
 
 .os-item:hover {
-  border-color: var(--lime);
+  border-color: var(--azure-pastel);
   box-shadow: 0 4px 20px rgba(0,0,0,.06);
   transform: translateY(-1px);
 }
@@ -294,7 +292,7 @@ body {
 
 .os-numero-badge {
   background: var(--black);
-  color: var(--lime);
+  color: var(--azure-pastel);
   border-radius: 8px;
   padding: 4px 12px;
   font-size: 14px;
@@ -367,9 +365,9 @@ body {
 .pfield input:focus,
 .pfield select:focus,
 .pfield textarea:focus {
-  border-color: var(--lime);
+  border-color: var(--azure-pastel);
   background: var(--white);
-  box-shadow: 0 0 0 4px rgba(181,212,0,.1);
+  box-shadow: 0 0 0 4px #7ccaeb30;
 }
 
 .pfield input::placeholder,
@@ -403,7 +401,7 @@ body {
 .valor-total-box strong {
   font-size: 22px;
   font-weight: 700;
-  color: var(--lime);
+  color: var(--azure-pastel);
   letter-spacing: -0.02em;
 }
 
@@ -415,7 +413,7 @@ body {
 .historico-dot {
   width: 8px; height: 8px;
   border-radius: 50%;
-  background: var(--lime);
+  background: var(--azure-pastel);
   margin-top: 5px;
   flex-shrink: 0;
 }
@@ -436,7 +434,7 @@ body {
   align-items: center;
   gap: 8px;
   padding: 13px 28px;
-  background: var(--lime);
+  background: var(--azure-pastel);
   color: var(--black);
   border: none;
   border-radius: 50px;
@@ -448,7 +446,7 @@ body {
 }
 
 .btn-salvar:hover {
-  background: var(--lime-dark);
+  background: var(--azure);
   box-shadow: 0 4px 16px rgba(181,212,0,.3);
   transform: translateY(-1px);
 }
@@ -491,7 +489,7 @@ body {
 }
 
 .toast.show { display: flex; }
-.toast.ok   { border-left: 4px solid var(--lime); }
+.toast.ok   { border-left: 4px solid var(--azure-pastel); }
 .toast.err  { border-left: 4px solid #f87171; }
 
 /* ══════════════════════════════
@@ -554,7 +552,7 @@ body {
 }
 
 .hist-busca-box:focus-within {
-  border-color: var(--lime);
+  border-color: var(--azure-pastel);
   box-shadow: 0 0 0 4px rgba(181,212,0,.1);
 }
 
@@ -606,7 +604,7 @@ body {
   width: 32px; height: 32px;
   border-radius: 50%;
   border: 3px solid var(--gray-200);
-  border-top-color: var(--lime);
+  border-top-color: var(--azure-pastel);
   animation: spinH .9s linear infinite;
 }
 
@@ -717,12 +715,12 @@ body {
 }
 
 .hist-evento.primeiro::before {
-  background: var(--lime);
-  box-shadow: 0 0 0 2px var(--lime);
+  background: var(--azure-pastel);
+  box-shadow: 0 0 0 2px var(--azure-pastel);
 }
 
 .hist-evento.ultimo::before {
-  background: var(--lime);
+  background: var(--azure-pastel);
   box-shadow: 0 0 0 3px rgba(181,212,0,.3);
   width: 12px; height: 12px;
   left: -31px;
@@ -737,7 +735,7 @@ body {
   transition: border-color .2s;
 }
 
-.hist-evento-card:hover { border-color: var(--lime); }
+.hist-evento-card:hover { border-color: var(--azure-pastel); }
 
 .hist-evento-top {
   display: flex;
@@ -791,7 +789,7 @@ body {
 }
 
 .filtro-status-sel:focus {
-  border-color: var(--lime);
+  border-color: var(--azure-pastel);
   box-shadow: 0 0 0 4px rgba(181,212,0,.1);
 }
 
