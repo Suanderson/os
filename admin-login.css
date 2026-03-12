@@ -3,8 +3,8 @@
 :root {
   --black:     #0a0a0a;
   --white:     #ffffff;
-  --lime:      #b5d400;
-  --lime-dark: #9ab800;
+  --azure-pastel: #7cc9eb;
+  --azure: #5ea7c5;
   --gray-400:  #aaa;
   --radius:    14px;
 }
@@ -56,12 +56,15 @@ body {
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  border: 2px solid var(--lime);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
+
+.logo-ring img {
+    height: 60px;
+  }
 
 .login-logo .ring svg { width: 20px; height: 20px; }
 
@@ -124,15 +127,15 @@ body {
 .login-field input::placeholder { color: #444; }
 
 .login-field input:focus {
-  border-color: var(--lime);
-  box-shadow: 0 0 0 4px rgba(181,212,0,.1);
+  border-color: var(--azure-pastel);
+  box-shadow: 0 0 0 4px  #7ccaeb30;
 }
 
 /* ── BOTÃO ── */
 .btn-login {
   width: 100%;
   padding: 15px;
-  background: var(--lime);
+  background: var(--azure-pastel);
   color: var(--black);
   border: none;
   border-radius: 50px;
@@ -145,8 +148,8 @@ body {
 }
 
 .btn-login:hover {
-  background: var(--lime-dark);
-  box-shadow: 0 6px 24px rgba(181,212,0,.3);
+  background: var(--azure);
+  box-shadow: 0 6px 24px var(--azure-pastel);
   transform: translateY(-1px);
 }
 
