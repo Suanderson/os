@@ -90,10 +90,11 @@ function novaOS() {
   osAtual = null;
   limparForm();
 
-  document.getElementById("form-titulo").textContent    = "Nova Ordem de Serviço";
-  document.getElementById("form-os-numero").style.display = "none";
-  document.getElementById("secao-historico-os").style.display = "none";
-  document.getElementById("btn-apagar").style.display   = "none";
+  document.getElementById("form-titulo").textContent              = "Nova Ordem de Serviço";
+  document.getElementById("form-os-numero").style.display         = "none";
+  document.getElementById("secao-historico-os").style.display     = "none";
+  document.getElementById("btn-apagar").style.display             = "none";
+  document.getElementById("btn-imprimir").style.display           = "none"; // ++ oculta em nova OS
 
   const agora = new Date();
   document.getElementById("f-entrada-data").value = agora.toISOString().slice(0, 10);
@@ -120,7 +121,8 @@ function abrirOS(numero) {
     const badge = document.getElementById("form-os-numero");
     badge.textContent    = "#" + dados.os;
     badge.style.display  = "inline-block";
-    document.getElementById("btn-apagar").style.display = "flex";
+    document.getElementById("btn-apagar").style.display   = "flex";
+    document.getElementById("btn-imprimir").style.display = "flex"; // ++ exibe ao editar OS
 
     setValue("f-cliente",           dados.cliente);
     setValue("f-telefone",          dados.telefone);
@@ -415,6 +417,15 @@ function renderHistorico(grupos, busca) {
 function toggleGrupo(index) {
   const grupo = document.getElementById("grupo-" + index);
   if (grupo) grupo.classList.toggle("collapsed");
+}
+
+
+/* ══════════════════════════════
+   IMPRIMIR OS
+══════════════════════════════ */
+function imprimirOS() {
+  if (!osAtual) return;
+  window.open("imprimir-os.html?os=" + osAtual, "_blank");
 }
 
 

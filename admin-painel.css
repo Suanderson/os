@@ -812,6 +812,28 @@ body {
 .sidebar-overlay.show { display: block; }
 
 /* ══════════════════════════════
+   BOTÃO IMPRIMIR OS  ← único bloco novo
+══════════════════════════════ */
+.btn-imprimir {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 18px;
+  border-radius: 50px;
+  border: 1.5px solid var(--azure-pastel);
+  background: transparent;
+  color: var(--azure);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: background .2s, color .2s;
+  white-space: nowrap;
+}
+.btn-imprimir svg { width: 15px; height: 15px; }
+.btn-imprimir:hover { background: var(--azure-pastel); color: var(--black); }
+
+/* ══════════════════════════════
    RESPONSIVO
 ══════════════════════════════ */
 @media (max-width: 1024px) {
