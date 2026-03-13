@@ -1,5 +1,5 @@
 const URL_API  = "https://script.google.com/macros/s/AKfycbyGIGOxXHGtxXj5b4WHxbIU7IluC-Y7JWuZR_o1Dz0/exec";
-const URL_SITE = "https://suanderson.github.io/os-acompamento/";
+const URL_SITE = "https://suanderson.github.io/os/";
 const ENDERECO = "Tabocas, Espírito Santo - RN";
 
 function getParam(name) {
